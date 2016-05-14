@@ -1,3 +1,3 @@
 # **DyMMer** #
 
-A ferramenta DyMMer foi desenvolvida com o intuito de implementar medidas para apoiar na avaliação da qualidade de modelos de features em LPSDs, além de disponibilizar funcionalidades de visualização de um  modelo com ou sem contexto,  edição e  exportação  de  todos os  resultados das medidas aplicadas em  um modelo de feature.
+The DyMMer tool was developed in order to implement measures to assist the evaluation of quality features of models in LPSDs, besides offering fuctionalites of viewing feature models with or without context, editing and export of all results of the measures applied on a model feature.
