@@ -467,6 +467,9 @@ public class Main extends JFrame {
 		JMenuItem mntmDepthOfTree = new JMenuItem("Depth of tree Max");
 		mnNas.add(mntmDepthOfTree);
 		
+		JMenuItem mntmMeanDepthOfTree = new JMenuItem("Depth of tree Mean");
+		mnNas.add(mntmMeanDepthOfTree);
+		 
 		JMenuItem mntmMedianDepthOfTree = new JMenuItem("Depth of tree Median");
 		mnNas.add(mntmMedianDepthOfTree);
 		
@@ -500,6 +503,12 @@ public class Main extends JFrame {
 		JMenuItem mntmCrosstreeConstraintsRate = new JMenuItem("Cross-tree constraints Rate");
 		mnNas.add(mntmCrosstreeConstraintsRate);
 		
+		JMenuItem mntmConnectivityDependencyRate = new JMenuItem("Connectivity Dependency Rate");
+		mnNas.add(mntmConnectivityDependencyRate);
+		
+		JMenuItem mntmFeaturesReferencedConstraintsMean = new JMenuItem("Features Referenced in Constraints Mean");
+		mnNas.add(mntmFeaturesReferencedConstraintsMean);
+		
 		JMenuItem mntmCoefcientOfConnectivitydensity = new JMenuItem("Coeficient of Connectivity-Density");
 		mnNas.add(mntmCoefcientOfConnectivitydensity);
 		
@@ -524,6 +533,12 @@ public class Main extends JFrame {
 		JMenuItem mntmBranchingFactorMedian = new JMenuItem("Branching Factors Median");
 		mnNas.add(mntmBranchingFactorMedian);
 		
+		JMenuItem mntmGroupsOr = new JMenuItem("Number Groups Or");
+		mnNas.add(mntmGroupsOr);
+	
+		JMenuItem mntmGroupsXOr = new JMenuItem("Number Groups XOr");
+		mnNas.add(mntmGroupsXOr);
+		
 		JMenuItem mntmOrRate = new JMenuItem("Or Rate");
 		mnNas.add(mntmOrRate);
 		
@@ -533,8 +548,8 @@ public class Main extends JFrame {
 		JMenuItem mntmProductLineTotal = new JMenuItem("Ratio of Variability");
 		mnNas.add(mntmProductLineTotal);
 		
-		JMenuItem mntmNonfunctionalCommonality = new JMenuItem("Non-Functional Commonality");
-		mnNas.add(mntmNonfunctionalCommonality);
+		//JMenuItem mntmNonfunctionalCommonality = new JMenuItem("Non-Functional Commonality");
+		//mnNas.add(mntmNonfunctionalCommonality);
 		
 		mntmnumberOfFeatures.addActionListener(new ActionListener() {
 			@Override
@@ -573,6 +588,13 @@ public class Main extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {	
 				currentViewer.getLblResultReasoning().setText("Depth of tree: " + currentViewer.getModel().depthOfTreeMax());
+			}
+		});
+		
+		mntmMeanDepthOfTree.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {	
+				currentViewer.getLblResultReasoning().setText("Depth of tree Mean: " + currentViewer.getModel().depthOfTreeMean());
 			}
 		});
 		
@@ -652,6 +674,18 @@ public class Main extends JFrame {
 			}
 		});
 		
+		mntmConnectivityDependencyRate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				currentViewer.getLblResultReasoning().setText("Connectivity Dependency Rate: " + currentViewer.getModel().connectivityDependencyGraphRate());			
+			}
+		});
+		
+		mntmFeaturesReferencedConstraintsMean.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+				currentViewer.getLblResultReasoning().setText("Features Referenced in Constraints Mean: " + currentViewer.getModel().numberFeaturesReferencedConstraintsMean());			
+			}
+		});
+		
 		mntmCoefcientOfConnectivitydensity.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {		
@@ -706,6 +740,18 @@ public class Main extends JFrame {
 			}
 		});
 		
+		mntmGroupsOr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+				currentViewer.getLblResultReasoning().setText("Groups Or: " + currentViewer.getModel().numberOfGroupsOR());
+			}
+		});
+		
+		mntmGroupsXOr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+				currentViewer.getLblResultReasoning().setText("Groups XOr: " + currentViewer.getModel().numberOfGroupsXOR());
+			}
+		});
+		
 		mntmOrRate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
 				currentViewer.getLblResultReasoning().setText("Or Rate: " + currentViewer.getModel().orRate());
@@ -724,12 +770,12 @@ public class Main extends JFrame {
 			}
 		});
 		
-		mntmNonfunctionalCommonality.addActionListener(new ActionListener() {
+		/*mntmNonfunctionalCommonality.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				currentViewer.getLblResultReasoning().setText("Non-Functional Commonality: " + currentViewer.getModel().nonFunctionCommonality());
 			}
 		});
-		/*JMenuItem mntmCrosstreeConstraints = new JMenuItem(
+		JMenuItem mntmCrosstreeConstraints = new JMenuItem(
 		"Cross-tree constraints");
 		mnNas.add(mntmCrosstreeConstraints);*/
 	
