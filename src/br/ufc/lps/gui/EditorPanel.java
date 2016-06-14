@@ -407,7 +407,7 @@ public class EditorPanel extends JPanel {
 	    		System.out.println("Mouse event");
 				System.out.println(event.getButton());
 				
-				if(event.getButton() == MouseEvent.BUTTON3){
+				if(event.getButton() == MouseEvent.BUTTON1){
 	               
 					System.out.println("BUTTON 3");
 					
