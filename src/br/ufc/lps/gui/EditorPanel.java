@@ -3,6 +3,7 @@ package br.ufc.lps.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +31,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.tree.TreePath;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -122,7 +124,6 @@ public class EditorPanel extends JPanel {
 		tree = new JTree();
 		tree.setModel(new FeatureModelTree(model.getFeatureModel().getRoot()));
 		tree.setEditable(true);
-		tree.setComponentPopupMenu(getComponentPopupMenu());
 		tree.addMouseListener(getMouseListener());
 		
 		defaultContext = new Context("default", resolutions, null);
@@ -394,46 +395,44 @@ public class EditorPanel extends JPanel {
 	    	@Override
 	        public void mousePressed(MouseEvent event) {
 	            			
-	    		super.mousePressed(event);
-	    					
-	        }
-	    		    	
-	    	
-	    	@Override
-	    	public void mouseReleased(MouseEvent event) {
-	    		// TODO Auto-generated method stub
-	    		super.mouseReleased(event);
-	    	
-	    		System.out.println("Mouse event");
-				System.out.println(event.getButton());
-				
-				if(event.getButton() == MouseEvent.BUTTON1){
-	               
-					System.out.println("BUTTON 3");
-					
-					if(event.getSource() == tree){
-					
-						System.out.println("Arvore");
-						
-						TreePath pathForLocation = tree.getPathForLocation(event.getPoint().x, event.getPoint().y);
-		                if(pathForLocation != null){
-		                	System.out.println("NOT NULL");
-		                    selectedNode = (FeatureTreeNode) pathForLocation.getLastPathComponent();
-		                } else{
-		                	System.out.println("NULL");
-		                    selectedNode = null;
+	    		if ( SwingUtilities.isRightMouseButton( event ) ){
+	    			
+	    			if(event.getSource() == tree){
+	    				
+	    				TreePath path = tree.getPathForLocation ( event.getX (), event.getY () );
+		                Rectangle pathBounds = tree.getUI().getPathBounds( tree, path );
+		                if ( pathBounds != null && pathBounds.contains ( event.getX (), event.getY () ) )
+		                {
+		                    getComponentPopupMenu().show(tree, event.getX(), event.getY());
+			                
+		                    int rowSelected = tree.getRowForLocation(event.getX(), event.getY());
+		                    tree.setSelectionRow(rowSelected);
+		                    
+		                    selectedNode = (FeatureTreeNode) path.getLastPathComponent();
+			                
+
+
+			            
+		                }else{
+		                	selectedNode = null;
 		                }
-		                
-					}else if(event.getSource() == list){
-						
-						
+
+	    			}else if(event.getSource() == list){
+						    			
 						selectedConstraintIndex = list.locationToIndex(event.getPoint());
 						list.setSelectedIndex(selectedConstraintIndex);
 						System.out.println(String.valueOf(selectedConstraintIndex));
 						
 					}
-	            }
-	    	}
+	    			
+	    			
+	            }else{
+	            	super.mousePressed(event);
+	            }	
+	        }
+	    		    	
+	    	
+
 	    };
 	}
 	
