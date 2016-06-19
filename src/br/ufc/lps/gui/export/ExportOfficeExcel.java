@@ -39,11 +39,11 @@ public class ExportOfficeExcel {
 										"Cross-tree constraints (CTC)", "Connectivity of the Dependency Graph Rate (Rcon)", "Number of Features Referenced in Constraints Mean (Rden)", "Coeficient of connectivity-density (CoC)", 
 										"Number of variable features (NVF)", "Single Hotspot Features (SHoF)", "Multiple Hotspot Features (MHoF)", "Rigid Nohotspot Features (RNoF)", "Ratio of variability (RoV)", 
 										"Number of valid configurations (NVC)", "Branching Factor Max (BF Max)", "Branching Factor Median",
-										"Number Groups Or (NGOr)", "Number Groups XOR (NGXOr)", "Or Rate", "Xor Rate", "Non-Functional Commonality (NFC)"};
+										"Number Groups Or (NGOr)", "Number Groups XOR (NGXOr)", "Or Rate", "Xor Rate"};
 	
-	private static final String[] METRICS_CONTEXT = {"Number of Activated Features", "Number of Deactivated Features", "Number of Context Constraints", "Activated features by context adaptation (AFCA)",
-		"Desactivated features by context adaptation (DFCA)", "Non Context Features (NCF)"};
-	private static final String[] METRICS_WITHOUT_CONTEXT = {"Number of Contexts"};
+	private static final String[] METRICS_CONTEXT = {"Number of Contexts", "Number of Activated Features", "Number of Deactivated Features", "Number of Context Constraints", "Activated features by context adaptation (AFCA)",
+		"Desactivated features by context adaptation (DFCA)", "Context Features (CF)", "Context Features in Constraints (CFC)"};
+	private static final String[] METRICS_WITHOUT_CONTEXT = {};
 	
 	public ExportOfficeExcel(File files[]) {
 		
@@ -93,8 +93,8 @@ public class ExportOfficeExcel {
 						  model.crossTreeConstraintsVariables(), model.crossTreeConstraintsRate(), model.connectivityDependencyGraphRate(), model.numberFeaturesReferencedConstraintsMean(),
 						  model.coefficientOfConnectivityDensity(), model.numberOfVariableFeatures(), model.singleVariationPointsFeatures(), model.multipleVariationPointsFeatures(),
 						  model.rigidNotVariationPointsFeatures(), model.ratioVariability(), model.numberOfValidConfigurations(), 
-						  model.branchingFactorsMax(),  model.branchingFactorsMedian(), model.numberOfGroupsOR(), model.numberOfGroupsXOR(), model.orRate(),  model.xorRate(), 
-						  model.nonFunctionCommonality(), model.numberOfContexts(),modelName};
+						  model.branchingFactorsMax(),  model.branchingFactorsMedian(), model.numberOfGroupsOR(), model.numberOfGroupsXOR(), model.orRate(),  model.xorRate(), modelName
+						 };
 		
 			
 			datas.add(dataModel);
@@ -127,8 +127,8 @@ public class ExportOfficeExcel {
 						modelContext.connectivityDependencyGraphRate(), modelContext.numberFeaturesReferencedConstraintsMean(), modelContext.coefficientOfConnectivityDensity(), modelContext.numberOfVariableFeatures(),
 						modelContext.singleVariationPointsFeatures(), modelContext.multipleVariationPointsFeatures(), modelContext.rigidNotVariationPointsFeatures(), modelContext.ratioVariability(),
 						modelContext.numberOfValidConfigurations(), modelContext.branchingFactorsMax(), modelContext.branchingFactorsMedian(), modelContext.numberOfGroupsOR(), modelContext.numberOfGroupsXOR(), 
-						modelContext.orRate(),  modelContext.xorRate(), modelContext.nonFunctionCommonality(), modelContext.numberActivatedFeatures(), modelContext.numberDeactivatedFeatures(),
-						modelContext.numberContextConstraints(), modelContext.activatedFeaturesByContextAdaptation(), modelContext.desactivatedFeaturesByContextAdaptation(), modelContext.contextFeatures(), contextName};
+						modelContext.orRate(),  modelContext.xorRate(),  modelContext.numberOfContexts(), modelContext.numberActivatedFeatures(), modelContext.numberDeactivatedFeatures(),
+						modelContext.numberContextConstraints(), modelContext.activatedFeaturesByContextAdaptation(), modelContext.desactivatedFeaturesByContextAdaptation(), modelContext.contextFeatures(), modelContext.contextFeaturesContraints(), contextName};
 						
 				datas.add(dataModelContext);
 				
